@@ -28,7 +28,7 @@ const Header = () => {
 	const handleSearch = () => {
 		if (SearchState) {
 			const searchResult: IAsync | undefined = SearchState.find(
-				el => el.name.toLowerCase() === searchInputValue.toLowerCase()
+				el => el.name.toLowerCase().trim() === searchInputValue.toLowerCase().trim()
 			)
 			if (searchResult) {
 				dispatch(SearchValue(searchResult))
