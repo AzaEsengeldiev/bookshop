@@ -3,11 +3,11 @@ import { useAppDispatch, useAppSelector } from '../../../components/hooks'
 import { DeleteProduct, fetchProducts } from '../../../components/asyncs'
 import { useNavigate } from 'react-router-dom'
 import { IAsync } from '../../../types'
-import { action, basket } from '../../../redux/Reducers'
+import { action, basket, removeScienceProduct } from '../../../redux/Reducers'
 import { MdDelete } from 'react-icons/md'
 
 const Science = () => {
-  const science = useAppSelector(s => s.science)
+	const science = useAppSelector(s => s.science)
 	const nav = useNavigate()
 	const list = useAppSelector(state => state.list)
 	const dispatch = useAppDispatch()
@@ -17,6 +17,7 @@ const Science = () => {
 		try {
 			await DeleteProduct(id)
 			await dispatch(fetchProducts())
+			dispatch(removeScienceProduct(id))
 		} catch (error) {
 			console.error('Ошибка при удалении продукта:', error)
 		}
