@@ -1,0 +1,64 @@
+.readProduct {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	// flex-direction: column;
+	gap: 30px;
+	.readProductBlock {
+		width: 200px;
+		height: 350px;
+		display: flex;
+		// align-items: center;
+		padding: 0px 20px;
+		justify-content: center;
+		flex-direction: column;
+		gap: 20px;
+		background: white;
+		-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		img {
+			width: 200px;
+			height: 240px;
+			transition: 0.5s;
+			cursor: pointer;
+		}
+		img:hover {
+			transform: scale(1.1);
+			-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		}
+		.Price_basket {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			button {
+				background: none;
+				border: none;
+				cursor: pointer;
+			}
+		}
+		.name_category_button {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.name_category {
+				display: flex;
+			}
+			button {
+				border: none;
+				background: none;
+				font-size: 20px;
+				color: red;
+				cursor: pointer;
+			}
+			h1 {
+				color: gray;
+				font-size: 10px;
+				font-weight: 400;
+			}
+		}
+	}
+}

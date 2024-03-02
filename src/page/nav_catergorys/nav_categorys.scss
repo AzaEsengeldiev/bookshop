@@ -1,0 +1,147 @@
+.Categorys {
+	display: flex;
+	align-items: flex-start;
+	padding-left: 50px;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	.category_nav {
+		display: flex;
+		// width: full;
+		gap: 30px;
+		.comedy {
+			transition: 0.5s;
+			cursor: pointer;
+			position: relative;
+			width: 315px;
+			height: 232px;
+			color: white;
+			background-image: url('https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1515062890i/37814337.jpg');
+			object-fit: cover;
+			background-size: cover;
+			background-repeat: no-repeat;
+			border-radius: 20px;
+			// opacity: 0.5;
+			h1 {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+				font-size: 20px;
+				font-weight: 700;
+			}
+		}
+		.fantasy {
+			cursor: pointer;
+			position: relative;
+			width: 315px;
+			height: 232px;
+			color: white;
+			background-image: url('https://i0.wp.com/hadehwrites.com/wp-content/uploads/2023/04/Fiction-Writing.png?fit=1080%2C1080&ssl=1');
+			object-fit: cover;
+			background-size: cover;
+			background-repeat: no-repeat;
+			border-radius: 20px;
+			transition: 0.5s;
+			h1 {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+				font-size: 20px;
+				font-weight: 700;
+			}
+		}
+		.science {
+			cursor: pointer;
+			transition: 0.5s;
+
+			position: relative;
+			width: 315px;
+			height: 232px;
+			color: white;
+			background-image: url('https://cdn-kinbb.nitrocdn.com/KplZMwWfpbSwKiglDTgpTpFZkmlMetsM/assets/images/optimized/rev-b3dcc82/store.csionline.org/wp-content/uploads/2017/10/products-5grd_1.jpg');
+			object-fit: cover;
+			background-size: cover;
+			background-repeat: no-repeat;
+			border-radius: 20px;
+			// opacity: 0.5;
+			h1 {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+				font-size: 20px;
+				font-weight: 700;
+			}
+		}
+		.action {
+			transition: 0.5s;
+			cursor: pointer;
+
+			position: relative;
+			width: 315px;
+			height: 232px;
+			color: white;
+			background-image: url('https://www.pegasusboek.nl/media/catalog/product/cache/387390372247601abea877333c5eb1f9/9/7/9785604828830.png');
+			object-fit: cover;
+			background-size: cover;
+			background-repeat: no-repeat;
+			border-radius: 20px;
+			// opacity: 0.5;
+			h1 {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+				font-size: 20px;
+				font-weight: 700;
+			}
+		}
+		.adventures {
+			transition: 0.5s;
+
+			cursor: pointer;
+			position: relative;
+			width: 315px;
+			height: 232px;
+			color: white;
+			background-image: url('https://img4.labirint.ru/rc/2520d5f86961208280c9d4cd6dd310ae/363x561q80/books55/541758/cover.png?1575473493');
+			object-fit: cover;
+			background-size: cover;
+			background-repeat: no-repeat;
+			border-radius: 20px;
+			// opacity: 0.5;
+			h1 {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+				font-size: 20px;
+				font-weight: 700;
+			}
+		}
+		.comedy:hover {
+			-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		}
+		.action:hover {
+			-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		}
+		.fantasy:hover {
+			-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		}
+		.adventures:hover {
+			-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		}
+		.science:hover {
+			-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+			box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+		}
+	}
+}
+//
