@@ -13,7 +13,7 @@ type BookState = {
 	action: IAsync[]
 	fantasy: IAsync[]
 	comedy: IAsync[]
-	science:IAsync[]
+	science: IAsync[]
 	adventures: IAsync[]
 }
 
@@ -24,12 +24,11 @@ const initialState: BookState = {
 	searchValue: null,
 	recomBooks: [],
 	basket: [],
-  action:[] ,
-  fantasy:[],
-  comedy:[],
-  science:[],
-  adventures:[]
-
+	action: [],
+	fantasy: [],
+	comedy: [],
+	science: [],
+	adventures: []
 }
 
 export const toolkitSlice = createSlice({
@@ -72,13 +71,10 @@ export const toolkitSlice = createSlice({
 		removeScienceProduct(state, action: PayloadAction<string>) {
 			state.science = state.science.filter(el => el.id !== action.payload)
 		},
-		removeComedyProduct(state, action: PayloadAction<string>) {
-			state.comedy = state.comedy.filter(el => el.id !== action.payload)
-		},
+
 		removeAdventuresProduct(state, action: PayloadAction<string>) {
 			state.adventures = state.adventures.filter(el => el.id !== action.payload)
-		},
-
+		}
 	},
 	extraReducers: builder => {
 		builder
@@ -110,8 +106,7 @@ export const {
 	adventures,
 	science,
 	removeFantasyProduct,
-  removeActionProduct,
-  removeAdventuresProduct,
-  removeComedyProduct,
-  removeScienceProduct
+	removeActionProduct,
+	removeAdventuresProduct,
+	removeScienceProduct
 } = toolkitSlice.actions

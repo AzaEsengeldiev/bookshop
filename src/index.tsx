@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
 import MainRoutes from './routes/MainRoutes'
-import Footer from './components/footer'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

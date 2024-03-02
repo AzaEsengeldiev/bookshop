@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../components/hooks'
 import { DeleteProduct, fetchProducts } from '../../../components/asyncs'
 import { useNavigate } from 'react-router-dom'
 import { IAsync } from '../../../types'
-import { action, basket, removeActionProduct, removeAdventuresProduct, removeComedyProduct, removeFantasyProduct } from '../../../redux/Reducers'
+import { action, basket, removeActionProduct, removeAdventuresProduct, removeFantasyProduct } from '../../../redux/Reducers'
 import { MdDelete } from 'react-icons/md'
 import { useEffect } from 'react'
 
@@ -23,7 +23,6 @@ const ReadProduct = () => {
       dispatch(removeFantasyProduct(id))
       dispatch(removeActionProduct(id))
       dispatch(removeAdventuresProduct(id))
-      dispatch(removeComedyProduct(id))
 		} catch (error) {
 			console.error('Ошибка при удалении продукта:', error)
 		}
@@ -43,21 +42,7 @@ const ReadProduct = () => {
 			console.log('errorBasket')
 		}
 	}
-//  
-// useEffect(() => {
-// // category(list)
 
-// },[list])
-
-	// const addBasket = async (id:string) => {
-	//   	try {
-	// 			await Basket(id)
-	// 		} catch (error) {
-	// 			console.error('Ошибка при удалении продукта:', error)
-	// 		}
-	// }
-	// useEffect(() => {}, [list])
-	//nav(`/edit/${el.id}`)
 	return (
 		<div className='readProduct'>
 			{list.length > 0 ? (

@@ -6,7 +6,6 @@ import Basket from '../page/basket'
 import ProductDetails from '../components/ProductDetails'
 import SearchData from '../components/SearchData'
 import Fantasy from '../page/categorys/fantasy'
-import Comedy from '../page/categorys/comedy'
 import Science from '../page/categorys/science'
 import Adventures from '../page/categorys/adventures'
 import Detectiv from '../page/categorys/detectiv'
@@ -19,10 +18,9 @@ export default function MainRoutes() {
 		{ link: '/ProductDetails/:id', element: <ProductDetails />, id: 4 },
 		{ link: '/detectiv', element: <Detectiv />, id: 5 },
 		{ link: '/adventures', element: <Adventures />, id: 6 },
-		{ link: '/comedy', element: <Comedy />, id: 7 },
-		{ link: '/science', element: <Science />, id: 8 },
-		{ link: '/fantasy', element: <Fantasy />, id: 9 },
-		{ link: '/SearchDetails', element: <SearchData />, id: 10 }
+		{ link: '/science', element: <Science />, id: 7 },
+		{ link: '/fantasy', element: <Fantasy />, id: 8 },
+		{ link: '/SearchDetails', element: <SearchData />, id: 9 }
 	]
 
 	return (

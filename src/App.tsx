@@ -4,7 +4,6 @@ import Header from './components/Header'
 import { useAppDispatch } from './components/hooks'
 import { DeleteProduct, fetchProducts } from './components/asyncs'
 import MainRoutes from './routes/MainRoutes'
-import Footer from './components/footer'
 import NavCategorys from './page/nav_catergorys'
 import { useLocation } from 'react-router-dom'
 
@@ -23,7 +22,6 @@ function App() {
 		{
       locaction.pathname === '/' ? <NavCategorys/> :''
     }
-			{/* <Footer /> */}
 		</div>
 	)
 }
