@@ -14,7 +14,8 @@ import { MdDelete } from 'react-icons/md'
 
 const ReadProduct = () => {
 	const nav = useNavigate()
-	const list = useAppSelector(state => state.list)
+	const { list, loading, error} = useAppSelector(state => state)
+
 	const dispatch = useAppDispatch()
 	const bask = useAppSelector(s => s.basket)
 
@@ -43,6 +44,14 @@ const ReadProduct = () => {
 		} else {
 			console.log('errorBasket')
 		}
+	}
+
+	if (loading) {
+		return <div>Loading...</div>
+	}
+
+	if (error) {
+		return <div>Error: {error}</div>
 	}
 
 	return (

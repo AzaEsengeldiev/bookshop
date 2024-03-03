@@ -6,6 +6,8 @@ import { DeleteProduct, fetchProducts } from './components/asyncs'
 import MainRoutes from './routes/MainRoutes'
 import NavCategorys from './page/nav_catergorys'
 import { useLocation } from 'react-router-dom'
+import Swipers from './components/swiper'
+import MySwiper from './components/swiper'
 
 function App() {
 	const dispatch = useAppDispatch()
@@ -19,9 +21,8 @@ function App() {
 	return (
 		<div className='App'>
 			<Header />
-		{
-      locaction.pathname === '/' ? <NavCategorys/> :''
-    }
+			{locaction.pathname === '/' ? <MySwiper /> : ''}
+			{locaction.pathname === '/' ? <NavCategorys /> : ''}
 		</div>
 	)
 }
