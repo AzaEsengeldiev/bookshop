@@ -17,11 +17,7 @@ const NavCategorys = () => {
 						<h1>Детектив</h1>
 					</div>
 				</Link>
-				<Link to={'/comedy'}>
-					<div className='comedy'>
-						<h1>Комедии</h1>
-					</div>
-				</Link>
+			
 				<Link to={'/science'}>
 					<div className='science'>
 						<h1>Наука</h1>N
