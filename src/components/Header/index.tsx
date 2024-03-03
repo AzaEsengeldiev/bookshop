@@ -40,6 +40,13 @@ const Header = () => {
 			console.log('Ошибка: SearchState не определен')
 		}
 	}
+  function SearchKeyPress(e:any) {
+    if(e.key === 'Enter'){
+      return handleSearch()
+    }else{
+      console.log('error');
+    }
+  }
 
 	const handleAdminButtonClick = () => {
 		setAuthModal(true)
@@ -118,6 +125,7 @@ const Header = () => {
 					<div className='bookShopActions'>
 						<div className='search'>
 							<input
+              onKeyDown={SearchKeyPress}
 								onChange={e => setSearchInputValue(e.target.value)}
 								type='text'
 								placeholder='Search..'
