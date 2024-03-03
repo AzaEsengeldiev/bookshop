@@ -74,6 +74,19 @@ export const toolkitSlice = createSlice({
 
 		removeAdventuresProduct(state, action: PayloadAction<string>) {
 			state.adventures = state.adventures.filter(el => el.id !== action.payload)
+		},
+		sortAlphabet(state) {
+			state.list.sort((a, b) => {
+				return a.name.localeCompare(b.name)
+			})
+		},
+		sortFromBig(state) {
+			state.list.sort((a, b) => {
+				return Number(b.price) - Number(a.price)
+			})
+		},
+		sortFromSmall(state) {
+			state.list.sort((a, b) => Number(a.price) - Number(b.price))
 		}
 	},
 	extraReducers: builder => {
@@ -108,5 +121,8 @@ export const {
 	removeFantasyProduct,
 	removeActionProduct,
 	removeAdventuresProduct,
-	removeScienceProduct
+	removeScienceProduct,
+	sortAlphabet,
+	sortFromBig,
+	sortFromSmall
 } = toolkitSlice.actions

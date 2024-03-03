@@ -3,13 +3,12 @@
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
-	// flex-direction: column;
 	gap: 30px;
+	// margin-bottom: 100px;
 	.readProductBlock {
 		width: 200px;
 		height: 350px;
 		display: flex;
-		// align-items: center;
 		padding: 0px 20px;
 		justify-content: center;
 		flex-direction: column;

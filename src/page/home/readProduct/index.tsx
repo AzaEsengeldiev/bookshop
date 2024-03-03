@@ -4,10 +4,13 @@ import { useAppDispatch, useAppSelector } from '../../../components/hooks'
 import { DeleteProduct, fetchProducts } from '../../../components/asyncs'
 import { useNavigate } from 'react-router-dom'
 import { IAsync } from '../../../types'
-import { action, basket, removeActionProduct, removeAdventuresProduct, removeFantasyProduct } from '../../../redux/Reducers'
+import {
+	basket,
+	removeActionProduct,
+	removeAdventuresProduct,
+	removeFantasyProduct
+} from '../../../redux/Reducers'
 import { MdDelete } from 'react-icons/md'
-import { useEffect } from 'react'
-
 
 const ReadProduct = () => {
 	const nav = useNavigate()
@@ -15,14 +18,13 @@ const ReadProduct = () => {
 	const dispatch = useAppDispatch()
 	const bask = useAppSelector(s => s.basket)
 
-
 	const handleDelete = async (id: string) => {
 		try {
 			await DeleteProduct(id)
 			await dispatch(fetchProducts())
-      dispatch(removeFantasyProduct(id))
-      dispatch(removeActionProduct(id))
-      dispatch(removeAdventuresProduct(id))
+			dispatch(removeFantasyProduct(id))
+			dispatch(removeActionProduct(id))
+			dispatch(removeAdventuresProduct(id))
 		} catch (error) {
 			console.error('Ошибка при удалении продукта:', error)
 		}
@@ -60,12 +62,13 @@ const ReadProduct = () => {
 							</button>
 						</div>
 						<div className='name_category_button'>
-              <div className='name_category'>
-
-							<h1>{el.name}/</h1>
-							<h1>{el.category}</h1>
-              </div>
-						<button onClick={() => handleDelete(el.id)}><MdDelete/></button>
+							<div className='name_category'>
+								<h1>{el.name}/</h1>
+								<h1>{el.category}</h1>
+							</div>
+							<button onClick={() => handleDelete(el.id)}>
+								<MdDelete />
+							</button>
 						</div>
 					</div>
 				))
