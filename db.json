@@ -1,13 +1,4 @@
 {
-  "data": [
-    {
-      "id": "55be25df-b03e-e8fd-a7e3-5f6be7c454f6",
-      "name": "d",
-      "price": "1",
-      "discription": "1",
-      "category": "Фантастика",
-      "image": "1"
-    }
-  ],
+  "data": [],
   "admin": []
 }

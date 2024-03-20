@@ -197,6 +197,9 @@ const Header = () => {
 						<div className='modal-content'>
 							<input
 								disabled={attempt === 0}
+								style={{
+									cursor: attempt === 0 ? 'not-allowed' : 'pointer'
+								}}
 								type='text'
 								value={authInputValue}
 								onChange={handleAuthInputChange}
@@ -204,7 +207,8 @@ const Header = () => {
 							/>
 							<button
 								style={{
-									background: attempt === 0 ? 'gray' : 'blue'
+									background: attempt === 0 ? 'gray' : 'blue',
+									cursor: attempt === 0 ? 'not-allowed' : 'pointer'
 								}}
 								disabled={attempt === 0}
 								onClick={handleAuthSubmit}
