@@ -11,7 +11,6 @@ import {
 	fantasy,
 	science
 } from '../../../redux/Reducers'
-import { randomUUID } from 'crypto'
 import uuid from 'react-uuid'
 
 const ProductList = () => {
@@ -24,6 +23,7 @@ const ProductList = () => {
 		category: '',
 		image: ''
 	})
+ 
 	const dispatch = useAppDispatch()
 	const [openUrlInput, setOpenUrlInput] = useState<boolean>(false)
 	const [clue, setClue] = useState<boolean>(false)

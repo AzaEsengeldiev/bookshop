@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { IAsync } from '../../../types'
 import {
 	basket,
+	deleteBasket,
 	removeActionProduct,
 	removeAdventuresProduct,
 	removeFantasyProduct
@@ -14,8 +15,7 @@ import { MdDelete } from 'react-icons/md'
 
 const ReadProduct = () => {
 	const nav = useNavigate()
-	const { list, loading, error} = useAppSelector(state => state)
-
+	const { list, loading, error, countAuth } = useAppSelector(state => state)
 	const dispatch = useAppDispatch()
 	const bask = useAppSelector(s => s.basket)
 
@@ -26,12 +26,12 @@ const ReadProduct = () => {
 			dispatch(removeFantasyProduct(id))
 			dispatch(removeActionProduct(id))
 			dispatch(removeAdventuresProduct(id))
+      dispatch(deleteBasket(id))
 		} catch (error) {
 			console.error('Ошибка при удалении продукта:', error)
 		}
 	}
 	// console.log(Basket())
-	console.log(list)
 	function Basket(id: string) {
 		const res: IAsync | undefined = list.find(el => el.id === id)
 		if (res) {
@@ -75,9 +75,13 @@ const ReadProduct = () => {
 								<h1>{el.name}/</h1>
 								<h1>{el.category}</h1>
 							</div>
-							<button onClick={() => handleDelete(el.id)}>
-								<MdDelete />
-							</button>
+							{countAuth > 1 ? (
+								<button onClick={() => handleDelete(el.id)}>
+									<MdDelete />
+								</button>
+							) : (
+								''
+							)}
 						</div>
 					</div>
 				))

@@ -1,0 +1,14 @@
+.TotalPrice {
+	width: 300px;
+	height: 70px;
+	background: #010049;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+  padding: 0px 20px;
+  border-radius: 10px;
+  h1{
+    font-size: 15px;
+    color: white;
+  }
+}

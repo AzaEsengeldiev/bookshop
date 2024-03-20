@@ -1,4 +1,4 @@
-import { IAsync } from './../../types/index'
+import { IAsync, IBasketItem } from './../../types/index'
 // import { fethProducts } from '../../components/asyncs'
 import { fetchProducts } from '../../components/asyncs'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
@@ -9,12 +9,16 @@ type BookState = {
 	loading: boolean
 	error: string | null
 	recomBooks: IAsync[]
-	basket: IAsync[]
+	basket: IBasketItem[]
 	action: IAsync[]
 	fantasy: IAsync[]
 	comedy: IAsync[]
 	science: IAsync[]
 	adventures: IAsync[]
+	authModals: boolean
+	countAuth: number
+  plusPrice:number
+  minusPrice:number
 }
 
 const initialState: BookState = {
@@ -28,7 +32,11 @@ const initialState: BookState = {
 	fantasy: [],
 	comedy: [],
 	science: [],
-	adventures: []
+	adventures: [],
+	authModals: false,
+	countAuth: 1,
+  plusPrice:0,
+  minusPrice:0
 }
 
 export const toolkitSlice = createSlice({
@@ -38,11 +46,44 @@ export const toolkitSlice = createSlice({
 		SearchValue(state, action: PayloadAction<IAsync>) {
 			state.searchValue = action.payload
 		},
+		basketPlucCount(state, action: PayloadAction<number>) {
+			const itemIndex = state.basket.findIndex(
+				item => item.id === action.payload
+			)
+			if (itemIndex !== -1) {
+				state.basket[itemIndex].quantity += 1
+				        state.basket[itemIndex].price = (
+									2 * parseFloat(state.basket[itemIndex].price)
+								).toString()
+
+			}
+		},
+		basketMinucCount(state, action: PayloadAction<number>) {
+			const itemIndex = state.basket.findIndex(
+				item => item.id === action.payload
+			)
+			if (itemIndex !== -1 && state.basket[itemIndex].quantity > 1) {
+				state.basket[itemIndex].quantity -= 1
+        state.basket[itemIndex].price = (
+					parseFloat(state.basket[itemIndex].price) / 2
+				).toString()
+
+
+				// Number(state.basket[itemIndex].price) -= Number(
+				// 	state.basket[itemIndex].price
+				// )
+				// state.basket[itemIndex].price += state.basket[itemIndex].price
+			}
+		},
 		RecomBooks(state, action: PayloadAction<IAsync[]>) {
 			state.recomBooks = action.payload
 		},
 		basket(state, action: PayloadAction<IAsync>) {
-			state.basket.push(action.payload)
+			const newItem: IBasketItem = {
+				...action.payload,
+				quantity: 1
+			}
+			state.basket.push(newItem)
 		},
 		fantasy(state, action: PayloadAction<IAsync>) {
 			state.fantasy.push(action.payload)
@@ -87,6 +128,15 @@ export const toolkitSlice = createSlice({
 		},
 		sortFromSmall(state) {
 			state.list.sort((a, b) => Number(a.price) - Number(b.price))
+		},
+		falseAuthModal(state) {
+			state.authModals = false
+		},
+		trueAuthModal(state) {
+			state.authModals = true
+		},
+		countAuthModal(state) {
+			state.countAuth = state.countAuth + 1
 		}
 	},
 	extraReducers: builder => {
@@ -124,5 +174,10 @@ export const {
 	removeScienceProduct,
 	sortAlphabet,
 	sortFromBig,
-	sortFromSmall
+	sortFromSmall,
+	falseAuthModal,
+	trueAuthModal,
+	countAuthModal,
+	basketMinucCount,
+	basketPlucCount
 } = toolkitSlice.actions

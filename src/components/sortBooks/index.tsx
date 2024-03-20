@@ -22,7 +22,9 @@ const Sort = () => {
 
 	return (
 		<div className='Sort'>
-			<select value={sortValue} onChange={handleSortChange}>
+			<select style={{
+        cursor:'pointer'
+      }} value={sortValue} onChange={handleSortChange}>
 				<option value=''>Сортировка</option>
 				<option value='from-big'>По цене(от высокой к низкой)</option>
 				<option value='from-small'>По цене(от низкой к высокой)</option>

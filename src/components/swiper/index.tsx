@@ -40,7 +40,8 @@ const MySwiper = () => {
 					<img
 						style={{
 							width: '100%',
-							height: '500px'
+							height: '500px',
+							objectFit: 'cover'
 						}}
 						src='https://images.wallpaperscraft.ru/image/single/lampa_rozetka_ideia_120422_3840x2160.jpg'
 						alt='img'
@@ -75,9 +76,9 @@ const MySwiper = () => {
 			) : (
 				<button></button>
 			)}
-				<button className='next' onClick={handleNext}>
-					<FcNext />
-				</button>
+			<button className='next' onClick={handleNext}>
+				<FcNext />
+			</button>
 		</div>
 	)
 }

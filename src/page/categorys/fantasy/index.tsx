@@ -12,6 +12,7 @@ const Fantasy = () => {
 	const list = useAppSelector(state => state.list)
 	const dispatch = useAppDispatch()
 	const bask = useAppSelector(s => s.basket)
+  const {countAuth} = useAppSelector(s => s)
 
 	console.log(fantasy)
 
@@ -60,9 +61,11 @@ const Fantasy = () => {
 								<h1>{el.name}/</h1>
 								<h1>{el.category}</h1>
 							</div>
-							<button onClick={() => handleDelete(el.id)}>
+							{
+                countAuth > 1 ? <button onClick={() => handleDelete(el.id)}>
 								<MdDelete />
-							</button>
+							</button> : ''
+              }
 						</div>
 					</div>
 				))

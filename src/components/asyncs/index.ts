@@ -30,8 +30,8 @@ export async function DeleteProduct(id: string) {
 export const fetchProducts = createAsyncThunk<
 	IAsync[],
 	undefined,
-	{ rejectValue: string }
->('toolkitSlice/fetchProducts', async (_, { rejectWithValue }) => {
+	{ rejectValue: string }>
+  ('toolkitSlice/fetchProducts', async (_, { rejectWithValue }) => {
 	try {
 		const response = await axios.get(ProductAPI)
 		return response.data

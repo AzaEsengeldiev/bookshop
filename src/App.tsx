@@ -12,7 +12,6 @@ import MySwiper from './components/swiper'
 function App() {
 	const dispatch = useAppDispatch()
 	const locaction = useLocation()
-	console.log(locaction)
 
 	useEffect(() => {
 		dispatch(fetchProducts())

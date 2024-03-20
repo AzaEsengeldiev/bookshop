@@ -6,13 +6,19 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { IAsync } from '../../types'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { SearchValue } from '../../redux/Reducers'
+import {
+	SearchValue,
+	countAuthModal,
+	falseAuthModal,
+	trueAuthModal
+} from '../../redux/Reducers'
 import { IoHomeSharp } from 'react-icons/io5'
 import { keyAdmin } from '../../API'
 import { IoIosCloseCircle } from 'react-icons/io'
 
 const Header = () => {
 	const [searchInputValue, setSearchInputValue] = useState<string>('')
+	const { authModals } = useAppSelector(s => s)
 	const SearchState = useAppSelector(state => state.list)
 	const dispatch = useAppDispatch()
 	const navigator = useNavigate()
@@ -24,11 +30,13 @@ const Header = () => {
 	const [countDown, setCountDown] = useState<number>(15)
 	const [time, setTime] = useState<number>(15000)
 	const location = useLocation()
+	const { countAuth } = useAppSelector(s => s)
 
 	const handleSearch = () => {
 		if (SearchState) {
 			const searchResult: IAsync | undefined = SearchState.find(
-				el => el.name.toLowerCase().trim() === searchInputValue.toLowerCase().trim()
+				el =>
+					el.name.toLowerCase().trim() === searchInputValue.toLowerCase().trim()
 			)
 			if (searchResult) {
 				dispatch(SearchValue(searchResult))
@@ -40,23 +48,31 @@ const Header = () => {
 			console.log('Ошибка: SearchState не определен')
 		}
 	}
-  function SearchKeyPress(e:any) {
-    if(e.key === 'Enter'){
-      return handleSearch()
-    }else{
-      console.log('error');
-    }
-  }
+	function SearchKeyPress(e: any) {
+		if (e.key === 'Enter') {
+			return handleSearch()
+		} else {
+			console.log('error')
+		}
+	}
 
 	const handleAdminButtonClick = () => {
-		setAuthModal(true)
+		if (countAuth === 1) {
+			dispatch(trueAuthModal())
+			console.log('succes count')
+		} else {
+			dispatch(falseAuthModal())
+			console.log('error count')
+			navigator('/admin')
+		}
 	}
 
 	const handleAuthSubmit = () => {
 		if (authInputValue === keyAdmin) {
 			navigator('/admin')
-			setAuthModal(false)
 			setAuthInputValue('')
+			dispatch(falseAuthModal())
+			dispatch(countAuthModal())
 		} else {
 			setAuthInputValue('')
 			setInvalidKey(true)
@@ -78,7 +94,6 @@ const Header = () => {
 						setTime(60000)
 					}, time)
 				}
-				// if()
 
 				if (time === 60000) {
 					setCountDown(60)
@@ -109,6 +124,12 @@ const Header = () => {
 		}
 	}
 	// useEffect(() => {}, [countDown])
+	useEffect(() => {
+		const isAdminAuthenticated = localStorage.getItem('isAdminAuthenticated')
+		if (isAdminAuthenticated === 'true') {
+			setAuthModal(false)
+		}
+	}, [])
 
 	const handleAuthInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setAuthInputValue(e.target.value)
@@ -125,7 +146,7 @@ const Header = () => {
 					<div className='bookShopActions'>
 						<div className='search'>
 							<input
-              onKeyDown={SearchKeyPress}
+								onKeyDown={SearchKeyPress}
 								onChange={e => setSearchInputValue(e.target.value)}
 								type='text'
 								placeholder='Search..'
@@ -164,10 +185,13 @@ const Header = () => {
 					</div>
 				</div>
 			</div>
-			{authModal && (
+			{authModals && (
 				<div className='modal-overlay'>
 					<div className='modal'>
-						<button onClick={() => setAuthModal(false)} className='exitBtn'>
+						<button
+							onClick={() => dispatch(falseAuthModal())}
+							className='exitBtn'
+						>
 							<IoIosCloseCircle />
 						</button>
 						<div className='modal-content'>
@@ -178,7 +202,13 @@ const Header = () => {
 								onChange={handleAuthInputChange}
 								placeholder='Admin-key'
 							/>
-							<button disabled={attempt === 0} onClick={handleAuthSubmit}>
+							<button
+								style={{
+									background: attempt === 0 ? 'gray' : 'blue'
+								}}
+								disabled={attempt === 0}
+								onClick={handleAuthSubmit}
+							>
 								Войти
 							</button>
 							{invalidKey && (

@@ -12,6 +12,7 @@ const Detectiv = () => {
 	const list = useAppSelector(state => state.list)
 	const dispatch = useAppDispatch()
 	const bask = useAppSelector(s => s.basket)
+  const {countAuth} = useAppSelector(s => s)
 
 	const handleDelete = async (id: string) => {
 		try {
@@ -60,9 +61,13 @@ const Detectiv = () => {
 									<h1>{el.name}/</h1>
 									<h1>{el.category}</h1>
 								</div>
-								<button onClick={() => handleDelete(el.id)}>
-									<MdDelete />
-								</button>
+								{countAuth > 1 ? (
+									<button onClick={() => handleDelete(el.id)}>
+										<MdDelete />
+									</button>
+								) : (
+									''
+								)}
 							</div>
 						</div>
 					))

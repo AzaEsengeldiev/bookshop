@@ -19,3 +19,6 @@ export interface IInputValue {
 	discription: string
 	category: string
 }
+ export interface IBasketItem extends IAsync {
+	quantity: number
+}
